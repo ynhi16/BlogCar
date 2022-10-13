@@ -83,7 +83,7 @@
     </div>
 </div>
 <?php endwhile; else : ?>
-<p>Rất tiếc! Không có sản phẩm</p>
+<p>Rất tiếc! Không có bài viết</p>
 <?php endif; ?>
 
 <?php get_footer() ?>
