@@ -173,12 +173,19 @@
 <div class="block-partner">
     <div class="container">
         <div class="responsive">
+            <?php $getposts = new WP_query(); $getposts->query('post_status=publish&showposts=12&post_type=anh-brand'); ?>
+            <?php global $wp_query; $wp_query->in_the_loop = true; ?>
+            <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+
             <div class="col-2 item-partner">
                 <div class="bg">
-                    <img class="img-fluid" src="<?php bloginfo('template_directory') ?>/img/1.png" alt="">
+                    <img class="img-fluid" src="<?php echo get_the_post_thumbnail_url( get_the_id(), 'full' ); ?>"
+                        alt="">
                 </div>
             </div>
-            <div class="col-2 item-partner">
+            <?php endwhile; wp_reset_postdata(); ?>
+
+            <!-- <div class="col-2 item-partner">
                 <div class="bg">
                     <img class="img-fluid" src="<?php bloginfo('template_directory') ?>/img/2.png" alt="">
                 </div>
@@ -207,7 +214,7 @@
                 <div class="bg">
                     <img class="img-fluid" src="<?php bloginfo('template_directory') ?>/img/1.png" alt="">
                 </div>
-            </div>
+            </div> -->
         </div>
         <button class="button-slider next"><i class="fas fa-chevron-right"></i></button>
         <button class="button-slider prev"><i class="fas fa-chevron-left"></i></button>
